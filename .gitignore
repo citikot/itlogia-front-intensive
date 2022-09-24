@@ -1,4 +1,71 @@
-*.idea*
-.idea
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+cars-app/dist
+cars-app/tmp
+cars-app/out-tsc
+cars-app/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+cars-app/node_modules
+cars-app/npm-debug.log
+cars-app/yarn-error.log
+
+# IDEs and editors
 .idea/
-node_modules/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+cars-app/.idea/
+cars-app/.project
+cars-app/.classpath
+cars-app/.c9/
+cars-app/*.launch
+cars-app/.settings/
+cars-app/*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+cars-app/.vscode/*
+cars-app/!.vscode/settings.json
+cars-app/!.vscode/tasks.json
+cars-app/!.vscode/launch.json
+cars-app/!.vscode/extensions.json
+cars-app/.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+cars-app/.angular/cache
+cars-app/.sass-cache/
+cars-app/connect.lock
+cars-app/coverage
+cars-app/libpeerconnection.log
+cars-app/testem.log
+cars-app/typings
+
+# System files
+.DS_Store
+Thumbs.db
+cars-app.DS_Store
+cars-appThumbs.db
