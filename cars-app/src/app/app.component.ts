@@ -1,5 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {AppService} from "./app.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-root',
@@ -15,52 +17,13 @@ export class AppComponent {
     }
   );
 
-  carsData = [
-    {
-      image: "1.png",
-      name: "Lamborghini Huracan Spyder",
-      gear: "Полный",
-      engine: 5.2,
-      places: 2
-    },
-    {
-      image: "2.png",
-      name: "Chevrolet Corvette",
-      gear: "Полный",
-      engine: 6.2,
-      places: 2
-    },
-    {
-      image: "3.png",
-      name: "Ferrari California",
-      gear: "Полный",
-      engine: 3.9,
-      places: 4
-    },
-    {
-      image: "4.png",
-      name: "Lamborghini Urus",
-      gear: "Полный",
-      engine: 4,
-      places: 5
-    },
-    {
-      image: "5.png",
-      name: "Audi R8",
-      gear: "Полный",
-      engine: 5.2,
-      places: 2
-    },
-    {
-      image: "6.png",
-      name: "Аренда Chevrolet Camaro",
-      gear: "Задний",
-      engine: 2,
-      places: 4
-    }
-  ];
+  carsData: any;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private appService: AppService) {
+  }
+
+  ngOnInit(){
+    this.appService.getData().subscribe(carsData => this.carsData = carsData);
   }
 
   goScroll(target: HTMLElement, car?: any) {
@@ -85,9 +48,20 @@ export class AppComponent {
   }
 
   onSubmit() {
+
     if (this.priceForm.valid) {
-      alert("Спасибо за заявку!");
-      this.priceForm.reset();
+      this.appService.sendQuery(this.priceForm.value)
+        .subscribe(
+          {
+            next: (response: any) => {
+              alert(response.message);
+              this.priceForm.reset();
+            },
+            error: (response) => {
+              alert(response.error.message);
+            }
+          }
+        );
     }
   }
 }
