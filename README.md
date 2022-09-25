@@ -1,3 +1,3 @@
 ## Front-end intensive ITlogia
 
-### Домашка модуля 3
+### Демо SPA на Angular
