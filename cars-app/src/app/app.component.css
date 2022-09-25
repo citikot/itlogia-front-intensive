@@ -139,9 +139,15 @@ body {
     margin-top: 40px;
 }
 
+.car-item-image:hover img {
+    transform: scale(1.3);
+}
+
 .car-item-image img {
     vertical-align: bottom;
+    transition: all .3s;
 }
+
 
 .car-item-title {
     font-weight: bold;
