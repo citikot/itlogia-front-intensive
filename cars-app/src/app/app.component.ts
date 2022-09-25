@@ -19,11 +19,20 @@ export class AppComponent {
 
   carsData: any;
 
+  trans: any;
+
+  category: string = 'sport';
+
+  toggleCategory(category: string) {
+    this.category = category;
+    this.ngOnInit();
+  }
+
   constructor(private fb: FormBuilder, private appService: AppService) {
   }
 
-  ngOnInit(){
-    this.appService.getData().subscribe(carsData => this.carsData = carsData);
+  ngOnInit() {
+    this.appService.getData(this.category).subscribe(carsData => this.carsData = carsData);
   }
 
   goScroll(target: HTMLElement, car?: any) {
@@ -32,8 +41,6 @@ export class AppComponent {
       this.priceForm.patchValue({car: car.name});
     }
   }
-
-  trans: any;
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
